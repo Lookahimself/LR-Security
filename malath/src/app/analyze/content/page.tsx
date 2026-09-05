@@ -1,9 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { Search, Shield, AlertTriangle, ArrowRight, Save, FileText } from 'lucide-react';
+import { Search, Shield, AlertTriangle, ArrowRight, FileText } from 'lucide-react';
 import Link from 'next/link';
 import { AnalysisResult } from '@/types';
+import { SaveCaseButton } from '@/components/SaveCaseButton';
 
 export default function AnalyzeContentPage() {
   const [content, setContent] = useState('');
@@ -167,10 +168,7 @@ export default function AnalyzeContentPage() {
             </div>
             
             <div className="flex flex-col sm:flex-row gap-3">
-               <button className="flex-1 flex items-center justify-center gap-2 bg-slate-900 text-white py-3 px-4 rounded-xl font-medium hover:bg-slate-800 transition-colors">
-                 <Save className="h-4 w-4" />
-                 حفظ كحالة جديدة
-               </button>
+               <SaveCaseButton analysisResult={result} rawContent={content} />
                <button 
                  onClick={() => {setResult(null); setContent('');}}
                  className="flex-1 flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-200 py-3 px-4 rounded-xl font-medium hover:bg-slate-50 transition-colors"
