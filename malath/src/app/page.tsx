@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Shield, Search, FolderClosed, HeartHandshake, AlertCircle } from 'lucide-react'
+import { Shield, Search, FolderClosed, HeartHandshake, AlertCircle, FileImage } from 'lucide-react'
 
 export default function Home() {
   return (
@@ -31,29 +31,42 @@ export default function Home() {
         </div>
 
         {/* Primary Actions */}
-        <div className="grid md:grid-cols-2 gap-4 mb-8">
+        <div className="grid md:grid-cols-3 gap-4 mb-8">
           <Link 
             href="/analyze/content" 
-            className="flex flex-col items-center p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:shadow-lg transition-all"
+            className="flex flex-col items-center p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:shadow-lg transition-all"
           >
-            <div className="h-16 w-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-              <Search className="h-8 w-8 text-blue-600" />
+            <div className="h-14 w-14 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+              <Search className="h-7 w-7 text-blue-600" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">تحليل محتوى</h2>
-            <p className="text-center text-slate-500 text-sm">
-              تحليل رسالة، صورة، أو محادثة لفهم المخاطر المحتملة
+            <h2 className="text-lg font-semibold text-slate-900 mb-2">تحليل رسالة</h2>
+            <p className="text-center text-slate-500 text-xs">
+              تحليل محتوى نصي لفهم المخاطر المحتملة
+            </p>
+          </Link>
+
+          <Link 
+            href="/analyze/image" 
+            className="flex flex-col items-center p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:shadow-lg transition-all"
+          >
+            <div className="h-14 w-14 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+              <FileImage className="h-7 w-7 text-blue-600" />
+            </div>
+            <h2 className="text-lg font-semibold text-slate-900 mb-2">رفع أدلة أو صورة</h2>
+            <p className="text-center text-slate-500 text-xs">
+              الاحتفاظ بصورة بشكل آمن أو تحليلها
             </p>
           </Link>
 
           <Link 
             href="/analyze/url" 
-            className="flex flex-col items-center p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:shadow-lg transition-all"
+            className="flex flex-col items-center p-6 bg-white rounded-2xl border-2 border-slate-100 hover:border-blue-500 hover:shadow-lg transition-all"
           >
-            <div className="h-16 w-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-              <AlertCircle className="h-8 w-8 text-blue-600" />
+            <div className="h-14 w-14 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+              <AlertCircle className="h-7 w-7 text-blue-600" />
             </div>
-            <h2 className="text-xl font-semibold text-slate-900 mb-2">فحص رابط</h2>
-            <p className="text-center text-slate-500 text-sm">
+            <h2 className="text-lg font-semibold text-slate-900 mb-2">فحص رابط</h2>
+            <p className="text-center text-slate-500 text-xs">
               تأكد من سلامة أي رابط قبل فتحه أو التفاعل معه
             </p>
           </Link>
