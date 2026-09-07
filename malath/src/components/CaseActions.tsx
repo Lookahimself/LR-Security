@@ -1,8 +1,9 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Trash2, AlertTriangle, FileDown, HeartHandshake } from 'lucide-react';
+import { ShareModal } from './ShareModal';
 
 interface CaseActionsProps {
   caseId: string;
@@ -11,6 +12,7 @@ interface CaseActionsProps {
 export function CaseActions({ caseId }: CaseActionsProps) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -22,7 +24,7 @@ export function CaseActions({ caseId }: CaseActionsProps) {
     setError(null);
 
     try {
-      const res = await fetch(`/api/cases/${caseId}`, {
+      const res = await fetch('/api/cases/' + caseId, {
         method: 'DELETE',
       });
 
@@ -43,7 +45,7 @@ export function CaseActions({ caseId }: CaseActionsProps) {
   };
 
   const handleShare = () => {
-     alert('ميزة المشاركة مع شخص موثوق قيد التطوير وستتوفر قريباً.');
+     setIsShareModalOpen(true);
   }
 
   return (
@@ -83,6 +85,12 @@ export function CaseActions({ caseId }: CaseActionsProps) {
           {isDeleting ? 'جاري الحذف...' : 'حذف الحالة نهائياً'}
         </button>
       </div>
+
+      <ShareModal 
+        caseId={caseId} 
+        isOpen={isShareModalOpen} 
+        onClose={() => setIsShareModalOpen(false)} 
+      />
     </div>
   );
 }
